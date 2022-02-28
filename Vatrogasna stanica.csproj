@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -37,10 +36,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="FontAwesome.Sharp, Version=5.15.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\FontAwesome.Sharp.5.15.3\lib\net472\FontAwesome.Sharp.dll</HintPath>
@@ -53,6 +52,9 @@
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <HintPath>packages\Oracle.ManagedDataAccess.19.11.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>packages\Oracle.ManagedDataAccess.EntityFramework.19.7.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -93,25 +95,100 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
     <Compile Include="FormMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMainMenu.Designer.cs">
       <DependentUpon>FormMainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Radnici.cs">
+    <Compile Include="Forms\DogadjajiForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Radnici.Designer.cs">
-      <DependentUpon>Radnici.cs</DependentUpon>
+    <Compile Include="Forms\DogadjajiForm.Designer.cs">
+      <DependentUpon>DogadjajiForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\OpremaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OpremaForm.Designer.cs">
+      <DependentUpon>OpremaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrijaveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrijaveForm.Designer.cs">
+      <DependentUpon>PrijaveForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProvereIspravnostiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProvereIspravnostiForm.Designer.cs">
+      <DependentUpon>ProvereIspravnostiForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RadniciForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RadniciForm.Designer.cs">
+      <DependentUpon>RadniciForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\VozilaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VozilaForm.Designer.cs">
+      <DependentUpon>VozilaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadingForm.Designer.cs">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Dogadjaj.cs" />
+    <Compile Include="Models\Oprema.cs" />
+    <Compile Include="Models\ProveraIspravnosti.cs" />
+    <Compile Include="Models\PrijavljivanjeDogadjaja.cs" />
+    <Compile Include="Models\Radnik.cs" />
+    <Compile Include="Models\RadnoMesto.cs" />
+    <Compile Include="Models\TipOpreme.cs" />
+    <Compile Include="Models\TipVozila.cs" />
+    <Compile Include="Models\UpucivanjeLjudstvaVozila.cs" />
+    <Compile Include="Models\Vozilo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\DogadjajRepo.cs" />
+    <Compile Include="Repos\OpremaRepo.cs" />
+    <Compile Include="Repos\PrijavljivanjeDogadjajaRepo.cs" />
+    <Compile Include="Repos\ProveraIspravnostiRepo.cs" />
+    <Compile Include="Repos\RadnikRepo.cs" />
+    <Compile Include="Repos\RadnoMestoRepo.cs" />
+    <Compile Include="Repos\TipOpremeRepo.cs" />
+    <Compile Include="Repos\TipVozilaRepo.cs" />
+    <Compile Include="Repos\UpucivanjeLjudstvaVozilaRepo.cs" />
+    <Compile Include="Repos\VoziloRepo.cs" />
     <EmbeddedResource Include="FormMainMenu.resx">
       <DependentUpon>FormMainMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Radnici.resx">
-      <DependentUpon>Radnici.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\DogadjajiForm.resx">
+      <DependentUpon>DogadjajiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OpremaForm.resx">
+      <DependentUpon>OpremaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrijaveForm.resx">
+      <DependentUpon>PrijaveForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProvereIspravnostiForm.resx">
+      <DependentUpon>ProvereIspravnostiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RadniciForm.resx">
+      <DependentUpon>RadniciForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VozilaForm.resx">
+      <DependentUpon>VozilaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingForm.resx">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -144,15 +221,7 @@
     <None Include="Resources\logo1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="EntityModels\" />
+    <Content Include="Assets\Firefighter.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
-  </Target>
-  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>
